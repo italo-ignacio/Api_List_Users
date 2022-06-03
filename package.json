@@ -1,0 +1,30 @@
+{
+  "name": "desafio_linkapi",
+  "version": "1.0.0",
+  "description": "API do desafio técnico LinkApi - Junior",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itilocao/Desafio_LinkApi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itilocao/Desafio_LinkApi/issues"
+  },
+  "homepage": "https://github.com/itilocao/Desafio_LinkApi#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "node-fetch": "^3.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "sucrase": "^3.21.0"
+  }
+}
