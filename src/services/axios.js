@@ -1,5 +1,11 @@
+// import das dependências
 import axios from "axios";
+import dotenv from "dotenv";
 
+// iniciar o dotenv
+dotenv.config();
+
+// Instanciar e exportar o axios com a URL base do mock
 export default axios.create({
-  baseURL: "https://62151ae9cdb9d09717adf48c.mockapi.io/api/v1",
+  baseURL: process.env.MOCK_BASE_URL,
 });

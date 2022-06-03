@@ -1,0 +1,175 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Desafio_LinkApi",
+    "description": "API para visualizar os dados dos usuários listados na MockApi fornecida",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "API para teste"
+    }
+  ],
+  "paths": {
+    "/user": {
+      "get": {
+        "description": "Rota que retorna os usuários junto com seu endereço e contato",
+        "summary": "Listar usuários",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Qual página será exibida",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Quantidade de elementos a serem retornados por página",
+            "required": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Campo que será considerado na ordenação de dados",
+            "required": false
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Ordem de classificação (asc ou desc)",
+            "required": false
+          },
+          {
+            "name": "pass",
+            "in": "query",
+            "description": "Para retornar todos usuários mesmo com falhas coloque o valor 0 (zero)",
+            "required": false
+          }
+        ],
+        "responses": {
+          "423": {
+            "description": "Muitos usuários para serem retornados",
+            "content": {
+              "applcation/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "error": {
+                    "value": {
+                      "description": "Muitos usuários para serem retornados",
+                      "solution": "Diminua o número de usuários a serem retornados (limit) e coloque qual pág deve ser exibida"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "applcation/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "user": {
+                    "value": {
+                      "id": "1",
+                      "createdAt": "2022-02-09T20:58:14.264Z",
+                      "fullName": "Italo Felipe Ignacio",
+                      "email": "italo.felipe.ignacio@hotmail.com",
+                      "addresses": {
+                        "addressId": "1",
+                        "address": "Alameda dos antúrios , 201 ",
+                        "country": "Brasil",
+                        "countryCode": "BR",
+                        "city": "Santana de parnaíba",
+                        "state": "São Paulo",
+                        "zipcode": "06539-110"
+                      },
+                      "contacts": {
+                        "contactId": "1",
+                        "name": "Italo",
+                        "phoneNumber": "(11) 94190-1415",
+                        "email": "italo.felipe.ignacio@hotmail.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "addresses": {
+            "type": "object",
+            "properties": {
+              "addressId": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "countryCode": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "zipcode": {
+                "type": "string"
+              }
+            }
+          },
+          "contacts": {
+            "type": "object",
+            "properties": {
+              "contactId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
