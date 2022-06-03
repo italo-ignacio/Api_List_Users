@@ -4,14 +4,25 @@ API do desafio técnico LinkApi - Junior
 
 # Clonar o projeto
 
-HTTPS https://github.com/itilocao/Desafio_LinkApi.git
-SSH git@github.com:itilocao/Desafio_LinkApi.git
+HTTPS
+
+```bash
+https://github.com/itilocao/Desafio_LinkApi.git
+```
+
+SSH
+
+```bash
+git@github.com:itilocao/Desafio_LinkApi.git
+```
 
 # Instalar dependências do projeto
 
-npm i
+```bash
+npm install
+```
 
-# Dependencies
+# Dependências
 
 - axios
   https://github.com/axios/axios
@@ -25,7 +36,7 @@ npm i
 - swagger-ui-express
   https://github.com/scottie1984/swagger-ui-express
 
-# devDependencies
+# Dependências de desenvolvimento
 
 - nodemon
   https://github.com/remy/nodemon
@@ -35,17 +46,28 @@ npm i
 
 # Criar arquivo .env na pasta do projeto
 
+```bash
 touch .env
+```
 
 # Adicionar os valores no .env
 
+```bash
 MOCK_BASE_URL=https://62151ae9cdb9d09717adf48c.mockapi.io/api/v1
+
+```
 
 # Execultar projeto
 
+```bash
 npm run dev
+```
+
 ou
+
+```bash
 npx nodemon
+```
 
 # Documentação da API na URL
 
