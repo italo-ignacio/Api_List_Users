@@ -21,14 +21,14 @@ class App {
     this.routes();
   }
   middlewares() {
-    // Middlewares para utilização de JSON
+    // Middleware para utilização de JSON
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
   }
   routes() {
     // Rotas do servidor
-    this.app.use("/user", userRoutes);
-    this.app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+    this.app.use("/users", userRoutes); // Rota de users
+    this.app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); // Rota da documentação
   }
 }
 

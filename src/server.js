@@ -1,10 +1,8 @@
 // import do servidor app
 import app from "./app";
 
-// Porta utilizada
-const port = 3000;
-
-// Função para iniciar a api na porta 3000
-app.listen(port, () => {
-  console.log(`http://localhost:${port}/user?page=1&limit=10`);
+// Função para iniciar a api na porta do .env
+app.listen(process.env.PORT, () => {
+  console.log(`\nListagem de usuários na URL: http://localhost:${process.env.PORT}/users?page=1&limit=10\nDocumentação da API na URL: http://localhost:${process.env.PORT}/api-docs
+`);
 });

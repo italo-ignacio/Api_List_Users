@@ -12,23 +12,25 @@
     }
   ],
   "paths": {
-    "/user": {
+    "/users": {
       "get": {
         "description": "Rota que retorna os usuários junto com seu endereço e contato",
         "summary": "Listar usuários",
-        "tags": ["User"],
+        "tags": ["Users"],
         "parameters": [
           {
             "name": "page",
             "in": "query",
             "description": "Qual página será exibida",
-            "required": false
+            "required": false,
+            "value": "1"
           },
           {
             "name": "limit",
             "in": "query",
             "description": "Quantidade de elementos a serem retornados por página",
-            "required": false
+            "required": false,
+            "value": "10"
           },
           {
             "name": "sortBy",
@@ -40,12 +42,6 @@
             "name": "order",
             "in": "query",
             "description": "Ordem de classificação (asc ou desc)",
-            "required": false
-          },
-          {
-            "name": "pass",
-            "in": "query",
-            "description": "Para retornar todos usuários mesmo com falhas coloque o valor 0 (zero)",
             "required": false
           }
         ],
@@ -85,7 +81,7 @@
                       "email": "italo.felipe.ignacio@hotmail.com",
                       "addresses": {
                         "addressId": "1",
-                        "address": "Alameda dos antúrios , 201 ",
+                        "address": "Alameda dos antúrios 201 ",
                         "country": "Brasil",
                         "countryCode": "BR",
                         "city": "Santana de parnaíba",
@@ -98,6 +94,121 @@
                         "phoneNumber": "(11) 94190-1415",
                         "email": "italo.felipe.ignacio@hotmail.com"
                       }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}/address": {
+      "get": {
+        "description": "Rota que retorna o endereço do usuários pelo ID",
+        "summary": "Listar endereços do usuário pelo ID",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID do usuários q será exibido",
+            "required": true
+          }
+        ],
+        "responses": {
+          "423": {
+            "description": "Muitos usuários para serem retornados",
+            "content": {
+              "applcation/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "error": {
+                    "value": {
+                      "description": "Muitos usuários para serem retornados",
+                      "solution": "Diminua o número de usuários a serem retornados (limit) e coloque qual pág deve ser exibida"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "applcation/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Address"
+                },
+                "examples": {
+                  "address": {
+                    "value": {
+                      "addressId": "1",
+                      "address": "Alameda dos antúrios 201 ",
+                      "country": "Brasil",
+                      "countryCode": "BR",
+                      "city": "Santana de parnaíba",
+                      "state": "São Paulo",
+                      "zipcode": "06539-110"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}/contact": {
+      "get": {
+        "description": "Rota que retorna o contato do usuários pelo ID",
+        "summary": "Listar contatos do usuário pelo ID",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID do usuários q será exibido",
+            "required": true
+          }
+        ],
+        "responses": {
+          "423": {
+            "description": "Muitos usuários para serem retornados",
+            "content": {
+              "applcation/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "error": {
+                    "value": {
+                      "description": "Muitos usuários para serem retornados",
+                      "solution": "Diminua o número de usuários a serem retornados (limit) e coloque qual pág deve ser exibida"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "applcation/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Contact"
+                },
+                "examples": {
+                  "contact": {
+                    "value": {
+                      "contactId": "1",
+                      "name": "Italo",
+                      "phoneNumber": "(11) 94190-1415",
+                      "email": "italo.felipe.ignacio@hotmail.com"
                     }
                   }
                 }
@@ -127,46 +238,54 @@
           },
           "addresses": {
             "type": "object",
-            "properties": {
-              "addressId": {
-                "type": "string"
-              },
-              "address": {
-                "type": "string"
-              },
-              "country": {
-                "type": "string"
-              },
-              "countryCode": {
-                "type": "string"
-              },
-              "city": {
-                "type": "string"
-              },
-              "state": {
-                "type": "string"
-              },
-              "zipcode": {
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/schemas/Address"
           },
           "contacts": {
             "type": "object",
-            "properties": {
-              "contactId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "phoneNumber": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/schemas/Contact"
+          }
+        }
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "addressId": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "countryCode": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zipcode": {
+            "type": "string"
+          }
+        }
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "contactId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
           }
         }
       }
