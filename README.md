@@ -32,18 +32,9 @@ npm install
 
 [Ver dependências](#dependências)
 
-# Criar um arquivo com o nome ".env" na pasta do projeto
+# Crie o arquivo ".env"
 
-```bash
-touch .env
-```
-
-# Adicionar os seguintes valores no arquivo ".env"
-
-```bash
-MOCK_BASE_URL=https://62151ae9cdb9d09717adf48c.mockapi.io/api/v1
-PORT=3000
-```
+Crie o arquivo ".env" com os valores do ".env.example"
 
 # Executar o projeto
 

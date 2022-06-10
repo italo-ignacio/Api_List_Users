@@ -46,8 +46,8 @@
           }
         ],
         "responses": {
-          "423": {
-            "description": "Muitos usuários para serem retornados",
+          "400": {
+            "description": "Erro ao buscar os usuários",
             "content": {
               "applcation/json": {
                 "schema": {
@@ -56,8 +56,7 @@
                 "examples": {
                   "error": {
                     "value": {
-                      "description": "Muitos usuários para serem retornados",
-                      "solution": "Diminua o número de usuários a serem retornados (limit) e coloque qual pág deve ser exibida"
+                      "error": "Erro ao buscar os usuários"
                     }
                   }
                 }
@@ -117,8 +116,8 @@
           }
         ],
         "responses": {
-          "423": {
-            "description": "Muitos usuários para serem retornados",
+          "400": {
+            "description": "Erro ao buscar o endereço",
             "content": {
               "applcation/json": {
                 "schema": {
@@ -127,8 +126,7 @@
                 "examples": {
                   "error": {
                     "value": {
-                      "description": "Muitos usuários para serem retornados",
-                      "solution": "Diminua o número de usuários a serem retornados (limit) e coloque qual pág deve ser exibida"
+                      "error": "Erro ao buscar o endereço"
                     }
                   }
                 }
@@ -176,8 +174,8 @@
           }
         ],
         "responses": {
-          "423": {
-            "description": "Muitos usuários para serem retornados",
+          "400": {
+            "description": "Erro ao buscar o contato",
             "content": {
               "applcation/json": {
                 "schema": {
@@ -186,8 +184,7 @@
                 "examples": {
                   "error": {
                     "value": {
-                      "description": "Muitos usuários para serem retornados",
-                      "solution": "Diminua o número de usuários a serem retornados (limit) e coloque qual pág deve ser exibida"
+                      "error": "Erro ao buscar o contato"
                     }
                   }
                 }

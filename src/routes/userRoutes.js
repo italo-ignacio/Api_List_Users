@@ -2,7 +2,7 @@
 import { Router } from "express";
 
 // import do user controller
-import UserController from "../controllers/UserController";
+import * as UserController from "../controllers/UserController";
 
 // instância da rota
 const router = new Router();
